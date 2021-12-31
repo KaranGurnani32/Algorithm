@@ -5,30 +5,11 @@ import java.util.Scanner;
 public class BasicMatrixCode {
     public static void main(String[] args) {
 
-
-//        int[][] matrix = new int[4][4];
-//        int rows = matrix.length;
-//        int columns = matrix[0].length;
-//
-//        for (int i = 0; i < rows; i++) {
-//            for (int j = 0; j < columns; j++) {
-//                System.out.println("Enter element (" + i + ", " + j + ") :");
-//                matrix[i][j] = scanner.nextInt();
-//            }
-//        }
-//
-//        for (int i = 0; i < rows; i++) {
-//            for (int j = 0; j < columns; j++) {
-//                System.out.print(matrix[i][j] + ", ");
-//            }
-//            System.out.println();
-//        }
-
         int [][] a = new int[2][2];
         int [][] b = new int[2][2];
 
         inputMatrix(a);
-        inputMatrix(b);
+//        inputMatrix(b);
 
         printMatrix(a);
         printMatrix(b);
@@ -36,6 +17,34 @@ public class BasicMatrixCode {
         int [][] sum = add(a, b);
         int [][] diff = subtract(a,b);
         int [][] product = multiply(a, b);
+    }
+
+    private static int[][] add(int[][] a, int[][] b) {
+        if (!validate(a, b)){
+            System.out.println("rows and column dont match");
+            return null;
+        }
+
+        int row = a.length;
+        int col = a[0].length;
+
+        int [][] sum = new int[row][col];
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                sum [i][j] = a[i][j] + b[i][j];
+            }
+        }
+        return sum;
+    }
+
+    private static boolean validate(int[][] a, int[][] b) {
+        int rowA = a.length;
+        int colA = a[0].length;
+        int rowB = b.length;
+        int colB = b[0].length;
+
+        return rowA == rowB && colA == colB;
     }
 
     private static int[][] multiply(int[][] a, int[][] b) {
@@ -54,7 +63,7 @@ public class BasicMatrixCode {
             for (int j = 0; j < colB; j++) {
                 int term = 0;
                 for (int k = 0; k < colA; k++) {
-                    term+= a[i][k] + b[k][j];
+                    term+= a[i][k] * b[k][j];
                 }
                 c[i][j]= term;
             }
@@ -81,36 +90,8 @@ public class BasicMatrixCode {
         return subtract;
     }
 
-    private static int[][] add(int[][] a, int[][] b) {
-        if (!validate(a, b)){
-            System.out.println("rows and column dont match");
-            return null;
-        }
-
-        int row = a.length;
-        int col = a[0].length;
-
-        int [][] sum = new int[row][col];
-
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
-             sum [i][j] = a[i][j] + b[i][j];
-            }
-        }
-        return sum;
-    }
-
-    private static boolean validate(int[][] a, int[][] b) {
-        int rowA = a.length;
-        int colA = a[0].length;
-        int rowB = b.length;
-        int colB = b[0].length;
-
-        return rowA == rowB && colA == colB;
-    }
-
     private static void printMatrix(int [][] matrix) {
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
         int rows = matrix.length;
         int columns = matrix[0].length;
 
