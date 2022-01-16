@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class FileCreation {
     public static void main(String[] args) {
         //Code to create a new file
-        /*
+
         File myfile = new File("karan.txt");
         try {
             myfile.createNewFile();
@@ -27,10 +27,8 @@ public class FileCreation {
         } catch (IOException e) {
             e.printStackTrace();
         }
-         */
 
         //Reading a file
-        File myfile = new File("karan.txt");
         try {
             Scanner scanner = new Scanner(myfile);
             while (scanner.hasNextLine()){
