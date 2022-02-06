@@ -1,10 +1,10 @@
-package questions;
+package questionspractice;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class MedianInSortedMatrix {
+public class MedianOfMatrix {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -31,11 +31,11 @@ public class MedianInSortedMatrix {
         int max = matrix[0][col - 1];
 
         for (int i = 0; i < row; i++) {
-            if(matrix[i][0] < min) {
+            if (matrix[i][0] < min) {
                 min = matrix[i][0];
             }
 
-            if(matrix[i][col - 1] > max) {
+            if (matrix[i][col - 1] > max) {
                 max = matrix[i][col - 1];
             }
         }
@@ -45,19 +45,11 @@ public class MedianInSortedMatrix {
 
         System.out.println(min + "  " + max);
         int desired = ((n + 1) / 2);
-        while(low < high) {
+        while (low <= high) {
             int mid = (low + high) / 2;
 
             System.out.println("Count for " + mid + " = " + countLessThanEqualsToEfficient(matrix, mid));
-            if(countLessThanEqualsToEfficient(matrix, mid) == desired) {
-                return mid;
-            }
 
-            if(countLessThanEqualsToEfficient(matrix, mid) > desired) {
-                high = mid - 1;
-            } else {
-                low = mid + 1;
-            }
         }
 
         return low;
@@ -71,7 +63,7 @@ public class MedianInSortedMatrix {
         int count = 0;
 
         for (int i = 0; i < row; i++) {
-            count += binarySearchLessThan(matrix[i], element);
+            count = count + binarySearchLessThan(matrix[i], element);
         }
 
         return count;
@@ -81,17 +73,16 @@ public class MedianInSortedMatrix {
         int low = 0;
         int high = a.length - 1;
 
-        while(low <= high) {
-            int mid = (low + high) / 2;
-
-            if(a[mid] <= element) {
+        while (low < high) {
+            int mid = low + high / 2;
+            if (a[mid] < element) {
                 low = mid + 1;
             } else {
                 high = mid - 1;
             }
         }
 
-        return low;
+        return low + 1;
     }
 
     private static int countLessThanEqualsTo(int[][] matrix, int element) {
@@ -102,7 +93,7 @@ public class MedianInSortedMatrix {
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-                if(matrix[i][j] <= element) {
+                if (matrix[i][j] <= element) {
                     count++;
                 }
             }
@@ -159,3 +150,5 @@ public class MedianInSortedMatrix {
         }
     }
 }
+
+

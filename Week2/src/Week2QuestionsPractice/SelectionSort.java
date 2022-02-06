@@ -7,26 +7,47 @@ public class SelectionSort {
         printArray(a);
 
         selectionSort(a);
-//        selectionDescendingSort(a);
+        printArray(a);
 
+        selectionDescendingSort(a);
         printArray(a);
     }
 
-    private static void selectionSort(int[] a) {
-        int min = 0;
+    private static void selectionDescendingSort(int[] a) {
 
-        for (int i = 0; i < a.length-1; i++) {
-            min = i;
-            for (int j = i+1; j < a.length; j++) {
-                if (a[min]>a[j]){
-                    min = j;
+        int maxIndex = 0;
+
+        for (int i = 0; i < a.length; i++) {
+            maxIndex = i;
+
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[maxIndex] < a[j]) {
+                    maxIndex = j;
                 }
             }
 
-            //swap
             int temp = a[i];
-            a[i] = a[min];
-            a[min] = temp;
+            a[i] = a[maxIndex];
+            a[maxIndex] = temp;
+        }
+    }
+
+    private static void selectionSort(int[] a) {
+
+        int minIndex = 0;
+
+        for (int i = 0; i < a.length; i++) {
+            minIndex = i;
+
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[minIndex] > a[j]) {
+                    minIndex = j;
+                }
+            }
+
+            int temp = a[i];
+            a[i] = a[minIndex];
+            a[minIndex] = temp;
         }
     }
 

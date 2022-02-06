@@ -12,11 +12,11 @@ public class BasicMatrixCode {
 //        inputMatrix(b);
 
         printMatrix(a);
-        printMatrix(b);
-        System.out.println("-------------");
-        int [][] sum = add(a, b);
-        int [][] diff = subtract(a,b);
-        int [][] product = multiply(a, b);
+//        printMatrix(b);
+//        System.out.println("-------------");
+//        int [][] sum = add(a, b);
+//        int [][] diff = subtract(a,b);
+//        int [][] product = multiply(a, b);
     }
 
     private static int[][] add(int[][] a, int[][] b) {
@@ -73,7 +73,7 @@ public class BasicMatrixCode {
 
     private static int[][] subtract(int[][] a, int[][] b) {
         if (!validate(a, b)){
-            System.out.println("rows and column dont match");
+            System.out.println("rows and column don't match");
             return null;
         }
 
