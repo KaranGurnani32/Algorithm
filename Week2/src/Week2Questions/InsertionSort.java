@@ -25,9 +25,10 @@ public class InsertionSort {
     }
 
     private static void insertionSort(int[] a) {
+        //int[] a = {8, 1, 3, 0, 6, 9, 2, 8, 4, 3};
         for (int i = 1; i < a.length; i++) {
-            int j = i - 1; //just one element before
-            int temp = a[i];
+            int j = i - 1; //just one element before //j=0
+            int temp = a[i]; //temp = 1
             while (j >= 0 && a[j] > temp) {
                 a[j + 1] = a[j]; // right shift the bigger number
                 j--;

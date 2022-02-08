@@ -16,48 +16,66 @@ public class BinaryTree {
         System.out.println();
     }
 
-    //LRN
     private static void postorder(Node root) {
+        if (root == null){
+            return;
+        }
+
+        postorder(root.left);
+        postorder(root.right);
+        System.out.print(root.data + "-->");
     }
 
-    //NLR
     private static void preorder(Node root) {
+        if (root == null){
+            return;
+        }
+
+        System.out.print(root.data + "-->");
+        preorder(root.left);
+        preorder(root.right);
     }
 
     //LNR
     private static void inorder(Node root) {
+        if (root == null){
+            return;
+        }
+
+        inorder(root.left);
+        System.out.print(root.data + "-->");
+        inorder(root.right);
     }
 
-    private static Node buildTree() {
+    static Node buildTree(){
         Scanner scanner = new Scanner(System.in);
 
         Node root = null;
-
         System.out.println("Enter data : ");
-        String input = scanner.nextLine();
+        String string = scanner.nextLine();
 
-        if (input.equalsIgnoreCase("0")) {
+        if (string.equalsIgnoreCase("0")){
             return null;
         }
 
-        root = new Node(input);
+        root = new Node(string);
 
-        System.out.println("create node in the left of " + root.data);
+        System.out.println("Enter left of " + string);
         root.left = buildTree();
 
-        System.out.println("create node in the right of " + root.data);
+        System.out.println("Enter right of " + string);
         root.right = buildTree();
 
         return root;
     }
 }
 
-class Node {
+class Node{
     String data;
     Node left;
     Node right;
 
-    Node(String input) {
+    Node(String input){
         data = input;
     }
 }

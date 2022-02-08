@@ -12,6 +12,7 @@ public class BSTRunner {
         bst.insert(25);
         bst.insert(35);
         bst.insert(-4);
+        bst.insert(45);
 
         if(bst.search(5)) {
             System.out.println("it is in the tree!");
@@ -33,6 +34,19 @@ public class BSTRunner {
         } else {
             System.out.println("not in the tree!");
         }
+
+        System.out.println("=================");
+        bst.printTree();
+        System.out.println("=================");
+
+        System.out.println("Removing 20");
+        bst.removeNode(20);
+
+
+        System.out.println("=================");
+        bst.printTree();
+        System.out.println("=================");
+
 
     }
 }
