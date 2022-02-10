@@ -1,119 +1,127 @@
 package bst_practice;
 
+import java.util.Scanner;
+
 public class BSTRunner {
 
     public static void main(String[] args) {
-        BinarySearchTree bst = new BinarySearchTree();
-        bst.insert(10);
-        bst.insert(10);
-        bst.insert(30);
-        bst.insert(5);
+        BinarySearchTree bs = new BinarySearchTree();
 
-        if(bst.search(5)) {
-            System.out.println("it is in the tree!");
-        } else {
-            System.out.println("not in the tree!");
-        }
+        bs.insert(12);
+        bs.insert(30);
+        bs.insert(10);
+        bs.insert(76);
+        bs.insert(40);
+        bs.insert(7);
+
+        System.out.println("--------------");
+        bs.printTree();
     }
 }
 
 class BinarySearchTree {
-
     private Node root;
 
-    // () -> represent Node
-
-    BinarySearchTree(){
-        // (Root) = (null)
+    BinarySearchTree() {
         root = null;
+
     }
 
-    public void insert(int input){
-        // (node) in which there will be some data i.e input
-        //assume input is 4
-        Node node = new Node(input);
+    public void printTree() {
+        inorder(root);
+    }
 
-        //tree is empty
-        // if (root) = (null)
+    private void inorder(Node root) {
+        //LNR
         if (root == null) {
-            //(root) = (4)
-            root = node;
             return;
         }
 
-        //tree not empty
-        //(root) = (4)
-        //input is 6, 6 > 4
-        if (input > root.data) {
-            if (root.high == null) {
-                // (4) -> (6)
-                root.high = node;
-                System.out.println(input + " added to the tree.");
-            } else {
-                // it is already (4) -> (6) then
-                insertAt(node, root.high);
-            }
-        } else {
-            if (root.low == null){
-                //4 in right of it is 6, in left is 2
-                root.low = node;
-                System.out.println(input + " added to the tree.");
-            } else {
-                insertAt(node, root.low);
-            }
-        }
-
+        inorder(root.low);
+        System.out.print(root.data + "-->");
+        inorder(root.high);
     }
 
-    private void insertAt(Node node, Node root) {
-        // (4) -> (6), We take 6 as root node
-        // in tree (6) is there
-        // node.data is 8
-        if (node.data > root.data) {
+    public void insert(int input) {
+        Node node = new Node(input);
+        if (root == null) {
+            root = node;
+            System.out.println(input + " added");
+            return;
+        }
+
+        if (input > root.data) {
             if (root.high == null) {
-                // (6) -> (8)
                 root.high = node;
-                System.out.println(node.data + " added to the tree.");
+                System.out.println(input + " added");
             } else {
-                // assume (6) -> (8)
                 insertAt(node, root.high);
             }
         } else {
             if (root.low == null) {
                 root.low = node;
-                System.out.println(node.data + " added to the tree.");
+                System.out.println(input + " added");
             } else {
                 insertAt(node, root.low);
             }
         }
     }
 
-    public boolean search(int input) {
-        if (root.data == input) {
-            return true;
-        } else {
-            if (input > root.data) {
-                return searchAt(input, root.high);
+    private void insertAt(Node node, Node root) {
+        if (node.data > root.data) {
+            if (root.high == null) {
+                root.high = node;
+                System.out.println(node.data + " added");
             } else {
-                return searchAt(input, root.low);
+                insertAt(node, root.high);
+            }
+        } else {
+            if (root.low == null) {
+                root.low = node;
+                System.out.println(node.data + " added");
+            } else {
+                insertAt(node, root.low);
             }
         }
     }
 
-    private boolean searchAt(int input, Node root) {
-        if(root == null) {
-            return false;
+    public void removeNode(int input) {
+        root = remove(root, input);
+    }
+
+    private Node remove(Node currentNode, int data) {
+        if (currentNode == null) {
+            return null;
         }
-        if (root.data == input) {
-            return true;
+        if (data < currentNode.data) {
+            currentNode.low = remove(currentNode.low, data);
+        } else if (data > currentNode.data) {
+            currentNode.high = remove(currentNode.high, data);
         } else {
-            if (input > root.data) {
-                return searchAt(input, root.high);
+            if (currentNode.low != null && currentNode.high != null) {
+                //min of R
+                int minR = min(currentNode.high);
+                currentNode.data = minR;
+                currentNode.high = remove(currentNode.high, minR);
+                
+            } else if (currentNode.low != null) {
+                return currentNode.low;
+            } else if (currentNode.high != null) {
+                return currentNode.high;
             } else {
-                return searchAt(input, root.low);
+                return null;
             }
         }
+        return currentNode;
     }
+
+    private int min(Node root) {
+        if (root.low != null) {
+            return min(root.low);
+        }
+        return root.data;
+    }
+
 }
 
 class Node {
@@ -121,9 +129,7 @@ class Node {
     Node low;
     Node high;
 
-    Node(int inputData) {
-        data = inputData;
-        low = null;
-        high = null;
+    Node(int input) {
+        data = input;
     }
 }

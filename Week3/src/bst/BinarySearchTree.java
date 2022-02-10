@@ -121,14 +121,14 @@ public class BinarySearchTree {
     }
 
     private int min(Node root) {
-        if(root.high != null) {
+        if(root.low != null) {
             return min(root.low);
         }
         return root.data;
     }
 
     private int max(Node root) {
-        if(root.low != null) {
+        if(root.high != null) {
             return max(root.high);
         }
         return root.data;
