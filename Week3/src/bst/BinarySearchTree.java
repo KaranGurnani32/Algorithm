@@ -147,4 +147,42 @@ public class BinarySearchTree {
         System.out.println(root.data);
         inorder(root.high);
     }
+
+    public Node floor(int key) {
+        Node node = this.root;
+        Node answerNode = null;
+        while(node != null) {
+            if(node.data == key) {
+                return node;
+            }
+
+            if(node.data > key) {
+                node = node.low;
+            } else {
+                answerNode = node;
+                node = node.high;
+            }
+        }
+
+        return answerNode;
+    }
+
+    public Node ceil(int key) {
+        Node node = this.root;
+        Node answerNode = null;
+        while(node != null) {
+            if(node.data == key) {
+                return node;
+            }
+
+            if(node.data < key) {
+                node = node.high;
+            } else {
+                answerNode = node;
+                node = node.low;
+            }
+        }
+
+        return answerNode;
+    }
 }

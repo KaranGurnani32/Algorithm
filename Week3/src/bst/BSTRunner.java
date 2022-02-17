@@ -39,14 +39,30 @@ public class BSTRunner {
         bst.printTree();
         System.out.println("=================");
 
-        System.out.println("Removing 20");
-        bst.removeNode(20);
+//        System.out.println("Removing 20");
+//        bst.removeNode(20);
 
 
         System.out.println("=================");
         bst.printTree();
         System.out.println("=================");
 
+
+
+        Node floorValue = bst.floor(10);
+        Node ceilValue = bst.ceil(10);
+
+        if(floorValue == null) {
+            System.out.println("floor value does not exist.");
+        } else {
+            System.out.println("floor value = " + floorValue.data);
+        }
+
+        if(ceilValue == null) {
+            System.out.println("ceil value does not exist.");
+        } else {
+            System.out.println("ceil value = " + ceilValue.data);
+        }
 
     }
 }
