@@ -13,7 +13,7 @@ public class MergeSort {
 
         int[] n = inputArray();
 
-        int[] s = mergeSort(n);
+//        int[] s = mergeSort(n);
 //
 //        printArray(a);
 //        printArray(b);
