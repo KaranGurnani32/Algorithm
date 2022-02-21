@@ -1,4 +1,4 @@
-package questions;
+package heap;
 
 public class Heap {
     int [] data;
