@@ -13,13 +13,13 @@ public class MergeSort {
 
         int[] n = inputArray();
 
-//        int[] s = mergeSort(n);
+        int[] s = mergeSort(n);
 //
 //        printArray(a);
 //        printArray(b);
 //        printArray(c);
         printArray(n);
-//        printArray(s);
+        printArray(s);
 
     }
 
@@ -93,11 +93,12 @@ public class MergeSort {
         System.out.println("Enter your input number string : ");
         String input = scanner.nextLine();
 
-        String[] aString = input.split("");
+        String[] aString = input.split(" ");
         int[] a = new int[aString.length];
         for (int i = 0; i < aString.length; i++) {
             a[i] = Integer.parseInt(aString[i]);
         }
+
 
         return a;
     }
