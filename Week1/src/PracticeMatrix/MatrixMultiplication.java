@@ -28,7 +28,7 @@ public class MatrixMultiplication {
         int rowB = b.length;
         int colB = b[0].length;
 
-        if(colA !=rowB){
+        if(colA != rowB){
             System.out.println("cannot be multiplied");
             return null;
         }
