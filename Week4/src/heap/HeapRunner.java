@@ -33,7 +33,12 @@ public class HeapRunner {
     }
 
     private static void removeByIndex() {
-
+        System.out.println("Enter index : ");
+        int index = scanner.nextInt();
+        int element = heap.removeByIndex(index);
+        if (element != -404) {
+            System.out.println("element deleted from heap is " + element);
+        }
     }
 
     private static void remove() {
