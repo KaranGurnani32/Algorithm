@@ -3,6 +3,7 @@ package graph;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Graph {
     private int size;
@@ -12,7 +13,7 @@ public class Graph {
 
     Graph(int size) {
         this.size = size;
-        this.edges = new LinkedList[size]; // doubt
+        this.edges = new LinkedList[size];
         for (int i = 0; i < this.edges.length; i++) {
             edges[i] = new LinkedList<>();
         }
@@ -33,6 +34,7 @@ public class Graph {
 
     public void bfs(Integer source) {
         boolean[] visited = new boolean[this.size];
+        int[] level = new int[this.size];
 
         //create an empty queue
         Queue<Integer> queue = new LinkedList<>();
@@ -40,18 +42,53 @@ public class Graph {
         //add source to queue
         queue.add(source);
         visited[source] = true;
+        level[source] = 0;
 
         while (!queue.isEmpty()) {
             Integer elementToPrint = queue.remove();
+            int currentLevel = level[elementToPrint];
 
             for (Integer neighbour : edges[elementToPrint]) {
                 if (!visited[neighbour]) {
+                    level[neighbour] = currentLevel + 1;
                     queue.add(neighbour);
                     visited[neighbour] = true;
                 }
             }
             System.out.println(elementToPrint);
         }
+        System.out.println("Level = ");
+        printArray(level);
+    }
+
+    private void printArray(int[] level) {
+        for (int element : level) {
+            System.out.println(element);
+        }
+    }
+
+    public void dfs(Integer source) {
+        boolean[] visited = new boolean[this.size];
+
+        //create empty queue
+        Stack<Integer> stack = new Stack<>();
+
+        //add source to queue
+        stack.push(source);
+        visited[source] = true;
+
+        while (!stack.isEmpty()) {
+            Integer elementToPrint = stack.pop();
+
+            for (Integer neighbour : edges[elementToPrint]) {
+                if (!visited[neighbour]) {
+                    stack.push(neighbour);
+                    visited[neighbour] = true;
+                }
+            }
+            System.out.println(elementToPrint);
+        }
+        
     }
 }
 
@@ -74,6 +111,7 @@ class GraphRunner {
         System.out.println("BFS : ");
         graph.bfs(0);
 
-
+        System.out.println("DFS : ");
+        graph.dfs(0);
     }
 }
