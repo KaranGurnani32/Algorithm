@@ -21,7 +21,7 @@ public class Heap {
         heapCorrectionUpward();
     }
 
-    private void heapCorrectionUpward() {
+    private void heapCorrectionUpward() { // max heap
         print();
         int childIndex = data.length - 1;
 
