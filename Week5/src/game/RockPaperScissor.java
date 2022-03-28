@@ -34,11 +34,11 @@ public class RockPaperScissor {
             System.out.println("Player 1 Wins");
         }
 
-        if (input.equals("Scissors") && input2.equals("Rock")) {
+        if (input.equals("S") && input2.equals("R")) {
             System.out.println("Player 2 Wins");
         }
 
-        if (input.equals("Rock") && input2.equals("Scissors")) {
+        if (input.equals("R") && input2.equals("S")) {
             System.out.println("Player 1 Wins");
         }
     }
