@@ -53,7 +53,7 @@ public class Matrix2 {
 
     private static int[][] subtract(int[][] a, int[][] b) {
         if(!validate(a, b)) {
-            System.out.printf("rows and columns count dont match");
+            System.out.printf("rows and columns count don't match");
             return null;
         }
         int row = a.length;

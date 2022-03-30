@@ -17,7 +17,7 @@ public class MaxMinarray {
         int max = a[0];
 
         for (int i = 0; i < a.length; i++) {
-            if (max<a[i]){
+            if (a[i] > max) {
                 max = a[i];
             }
         }
@@ -28,7 +28,7 @@ public class MaxMinarray {
         int min = a[0];
 
         for (int i = 0; i < a.length; i++) {
-            if (min>a[i]){
+            if (a[i] < min) {
                 min = a[i];
             }
         }
