@@ -3,7 +3,7 @@ package Week2Questions;
 public class BubbleSort {
     public static void main(String[] args) {
         int[] a = {8, 1, 3, 0, 6, 9, 2, 8, 4, 3};
-;
+        ;
         printArray(a);
 
         bubbleSort(a);
@@ -13,10 +13,10 @@ public class BubbleSort {
         printArray(a);
     }
 
-    private static void bubbleSort(int[] a) {
+    private static void bubbleSort(int[] a) { // O(n^2)
 
         for (int round = 0; round < a.length; round++) {
-            for (int j = 0; j < a.length - 1; j++) {
+            for (int j = 0; j < a.length; j++) {
                 if (a[j] > a[j + 1]) {
                     int temp = a[j];
                     a[j] = a[j + 1];
