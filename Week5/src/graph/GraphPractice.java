@@ -6,34 +6,29 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class GraphPractice {
-    private int size;
 
-    // created new array of list
-    // doubt why use list of array and then linked list
-    // we can use integer then linked list
-    private List<Integer>[] edges;
+    public int size;
 
-    GraphPractice(int size) {
+    //using adjacency list
+    public List<Integer>[] edges;
+
+    public GraphPractice(int size) {
         this.size = size;
-        this.edges = new LinkedList[size];
-        for (int i = 0; i < this.edges.length; i++) {
+        edges = new LinkedList[size];
+        for (int i = 0; i < edges.length; i++) {
             edges[i] = new LinkedList<>();
         }
     }
 
+
     public void addBiDirectionalEdge(int source, int destination) {
-        edges[source].add(destination);
-        edges[destination].add(source);
-    }
-
-    public boolean isConnected(int source, int destination) {
-
-        return this.edges[source].contains(destination);
+        this.edges[source].add(destination);
+        this.edges[destination].add(source);
     }
 
     public void bfs(Integer source) {
-        boolean[] visited = new boolean[this.size];
-        int[] level = new int[this.size];
+        boolean[] visited = new boolean[size];
+        int[] level = new int[size];
 
         Queue<Integer> queue = new LinkedList<>();
 
@@ -65,7 +60,7 @@ public class GraphPractice {
     }
 
     public void dfs(Integer source) {
-        boolean[] visited = new boolean[this.size];
+        boolean[] visited = new boolean[size];
 
         Stack<Integer> stack = new Stack<>();
 
