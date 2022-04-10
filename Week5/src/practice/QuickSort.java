@@ -1,17 +1,17 @@
-package sorting;
+package practice;
 
 import java.util.Random;
 
 public class QuickSort {
     public static void main(String[] args) {
-//        int [] array = giveRandomArray(10);
-        int [] array = {8 , 1, 3, 0, 6, 9, 4, 8};
-        System.out.println("Before sorting : ");
+        int[] array = {4, 6, 2, 5, 7, 9, 1, 3};
+
+        System.out.println("Before Sorting : ");
         printArray(array);
 
         quickSort(array);
 
-        System.out.println("After sorting : ");
+        System.out.println("After Sorting : ");
         printArray(array);
 
     }
@@ -23,7 +23,7 @@ public class QuickSort {
     }
 
     private static void quickSort(int[] array, int lowIndex, int highIndex) {
-        if(lowIndex >= highIndex) {
+        if (lowIndex >= highIndex) {
             return;
         }
 
@@ -39,20 +39,18 @@ public class QuickSort {
         int leftPointer = lowIndex;
         int rightPointer = highIndex;
 
-        while(leftPointer < rightPointer) {
-            while(array[leftPointer] <= pivot && leftPointer < rightPointer) {
+        while (leftPointer < rightPointer) {
+            while (array[leftPointer] <= pivot && leftPointer < rightPointer) {
                 leftPointer++;
             }
-            while(array[rightPointer] >= pivot && leftPointer < rightPointer) {
+            while (array[rightPointer] >= pivot && leftPointer < rightPointer) {
                 rightPointer--;
             }
-            if(leftPointer < rightPointer) {
+            if (leftPointer < rightPointer) {
                 swap(array, leftPointer, rightPointer);
             }
         }
-
         swap(array, leftPointer, highIndex);
-
         return leftPointer;
     }
 
@@ -62,20 +60,23 @@ public class QuickSort {
         array[rightPointer] = temp;
     }
 
+
     private static void printArray(int[] array) {
+
         for (int element : array) {
             System.out.print(element + ", ");
         }
         System.out.println();
+
     }
 
     private static int[] giveRandomArray(int size) {
-        int [] a = new int[size];
+        int[] a = new int[size];
 
         Random random = new Random();
 
         for (int i = 0; i < size; i++) {
-            a[i] = random.nextInt(100);
+            a[i] = random.nextInt(100); // What's bound
         }
 
         return a;
