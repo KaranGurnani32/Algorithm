@@ -2,8 +2,8 @@ package greedy;
 
 public class KnapSack {
     public static void main(String[] args) {
-        int[] profit = {70, 40, 10, 56, 30};
-        int[] weight = {8, 3, 1, 4, 2};
+        int[] profit = {20, 15, 10, 5, 10};
+        int[] weight = {3, 2, 1, 2, 3};
         int capacity = 20;
 
         int maxProfit = profitandweight(profit, weight, capacity);
@@ -17,6 +17,10 @@ public class KnapSack {
         // calculated profit/weight
         for (int i = 0; i < profit.length; i++) {
             c[i] = profit[i] / weight[i];
+        }
+
+        for (int element: c) {
+            System.out.println("element = " + element);
         }
 
         int maxProfitOfObject = 0;
